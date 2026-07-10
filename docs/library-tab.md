@@ -167,6 +167,7 @@ Reverts the Steamless operation by restoring the original `.BAK` backup files.
 ---
 
 ## Enable Online Function Toggle
+<img width="1050" height="351" alt="image" src="https://github.com/user-attachments/assets/7d780e09-16cb-4b82-b4db-708ea99f6e6f" />
 
 When you select a game in the Library tab, some games will show an **Enable Online Function** toggle in the game detail panel.
 
