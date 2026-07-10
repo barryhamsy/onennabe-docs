@@ -7,6 +7,7 @@ Access the Settings panel by clicking **⚙ Settings** in the top navigation bar
 ## Account
 
 ### 🔑 Activate App
+<img width="989" height="1040" alt="image" src="https://github.com/user-attachments/assets/0ea82bb1-3966-4646-a434-5bcd3c830c3b" />
 
 Opens the CD Key activation screen. Use this if your activation has expired or you need to re-enter your key after a reinstall.
 
@@ -24,6 +25,7 @@ Removes the currently bound CD Key and Steam account binding from this installat
 ## Settings
 
 ### Parental Control
+<img width="732" height="538" alt="image" src="https://github.com/user-attachments/assets/6dc0ea82-18b1-4195-93ab-b313ddab6382" />
 
 **Hides adult content** from the Store tab.
 
@@ -53,6 +55,7 @@ Adult content is now hidden from the Store tab.
 ---
 
 ### OpenSteamTool
+<img width="678" height="74" alt="image" src="https://github.com/user-attachments/assets/49999d24-d45e-4e85-9026-04bff015655c" />
 
 Enables or disables the **OpenSteamTool.dll** — the core unlocker that hooks into Steam to apply game unlocks.
 
@@ -79,6 +82,7 @@ Enables or disables the **OpenSteamTool.dll** — the core unlocker that hooks i
 ---
 
 ### Resize UI
+<img width="691" height="70" alt="image" src="https://github.com/user-attachments/assets/c06a0b92-02af-4bb4-8883-d86ab1b843b5" />
 
 Adjusts the zoom level of the ONENNABE interface.
 
@@ -92,6 +96,7 @@ Useful if the interface appears too small or too large on your display.
 ## Window
 
 ### Minimize to System Tray
+<img width="738" height="200" alt="image" src="https://github.com/user-attachments/assets/84e6fa1c-aeed-466e-8806-519db0001eaf" />
 
 When enabled, closing the ONENNABE window keeps the app running in the **system tray** (bottom-right corner of the taskbar) instead of fully exiting.
 
