@@ -43,6 +43,7 @@ Clears Steam's download cache and temporary files, then restarts Steam automatic
 ---
 
 ## 🩹 Fix Unlock Game Issue
+<img width="640" height="238" alt="image" src="https://github.com/user-attachments/assets/d879a4fc-340b-421f-96ad-3f87f0ec1135" />
 
 Clears Steam's `config` folder to fix games that won't unlock or throw config errors. This is an attempt to fix unlocking game issue
 
@@ -98,6 +99,7 @@ An **Injector Terminal** will appear showing the injection progress and results.
 ---
 
 ## 🛡️ Clear Denuvo Token (Error 88500012)
+<img width="639" height="236" alt="image" src="https://github.com/user-attachments/assets/fafac314-406e-4b24-82f0-a593a135564d" />
 
 Fixes the Denuvo activation error **88500012** for a specific game.
 
@@ -129,11 +131,12 @@ A third-party tool (not made by ONENNABE) that provides extra features for manag
 
 !!! note "Third-party tool"
     CloudRedirect is not affiliated with ONENNABE. Download and launch it from within the Tools section.
-Full tutorial at 
+Full tutorial at [CloudRedirect](cloudredirect.md)
 
 ---
 
 ## 🗑️ Delete Standalone Cache
+<img width="632" height="174" alt="image" src="https://github.com/user-attachments/assets/fabf3942-8ff9-4fa9-a259-2d4e61015ddb" />
 
 Removes the entire `Steam\depot_key\` folder, which contains all stored depot keys and bypass files.
 
@@ -143,6 +146,7 @@ Removes the entire `Steam\depot_key\` folder, which contains all stored depot ke
 ---
 
 ## 🖼️ Fix Blank Steam Icons
+<img width="629" height="264" alt="image" src="https://github.com/user-attachments/assets/5c3be2bb-15ca-483a-bbac-896be8d50c79" />
 
 Scans every installed game that has a Desktop shortcut and repairs its icon.
 
@@ -157,6 +161,7 @@ Scans every installed game that has a Desktop shortcut and repairs its icon.
 ---
 
 ## 🧹 Clear SUO Cache
+<img width="593" height="144" alt="image" src="https://github.com/user-attachments/assets/bc019083-7ebd-4958-951a-1940495ff789" />
 
 Wipes ONENNABE's cached app data — thumbnails, store cache, and temporary files.
 
@@ -169,6 +174,7 @@ Wipes ONENNABE's cached app data — thumbnails, store cache, and temporary file
 ---
 
 ## 🗑️ Remove All Games
+<img width="640" height="177" alt="image" src="https://github.com/user-attachments/assets/c32db180-eec0-42f4-b2e1-ee06eafdd741" />
 
 !!! danger "Destructive — Cannot Be Undone"
     Deletes every unlocked game from your Steam library. You will need to re-add games afterward. Your Steam installation is not affected.
