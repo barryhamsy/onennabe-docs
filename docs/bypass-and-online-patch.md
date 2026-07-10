@@ -64,8 +64,6 @@ When launching a game that has Online Patch applied, a browser pop-up from onlin
 ---
 
 ## Important Notes
-
-## Important Notes
  
 - **Do not skip Smart Apply.** You must run it before downloading the game in Steam.
 - **The game must be fully downloaded** in Steam before you can apply the patch from the Library tab.
