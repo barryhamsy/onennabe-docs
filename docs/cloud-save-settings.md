@@ -1,5 +1,5 @@
 # Cloud Save Settings
-<img width="955" height="1034" alt="image" src="https://github.com/user-attachments/assets/27083a74-afc4-47df-9850-58bf2186da4a" />
+
 
 Steam Unlock ONENNABE has a built-in Cloud Save system that backs up your game list, achievements, and save files to **Google Drive**.
 
@@ -9,7 +9,7 @@ Access it by clicking **☁️ Cloud Save Settings** in the top navigation bar.
     Steam Unlock ONENNABE must be **open and running** at all times for cloud saves to work. Auto-backup on startup, push, and pull all require the app to be active.
 
 ---
-
+<img width="955" height="1034" alt="image" src="https://github.com/user-attachments/assets/27083a74-afc4-47df-9850-58bf2186da4a" />
 ## Setting Up — Connect Google Drive
 
 Before using any cloud save features, you must connect your Google Drive account.
