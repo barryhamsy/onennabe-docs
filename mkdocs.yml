@@ -31,6 +31,7 @@ nav:
     - Bypass & Online Patch: bypass-and-online-patch.md
     - Denuvo Games: denuvo-games.md
     - Hypervisor Games: hypervisor.md
+    - Cloud Redirect: cloudredirect.md
   - Help:
     - Troubleshooting: troubleshooting.md
 
