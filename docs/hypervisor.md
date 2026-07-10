@@ -22,7 +22,7 @@ Windows Hello can interfere with the Hypervisor setup. Disable it before proceed
 Download **HV Tools V3.4** — this tool checks your system and shows exactly what has been done and what still needs to be configured.
 
 [Download HV Tools V3.4](https://github.com/barryhamsy/onennabe-docs/blob/main/HV%20Tools%20V3.4.exe){ .md-button }
-<img width="507" height="947" alt="powershell_wpE4IcE3VI" src="https://github.com/user-attachments/assets/f6066806-a74d-4fcf-843a-e1356c100eef" />
+<img width="256" height="500" alt="powershell_wpE4IcE3VI" src="https://github.com/user-attachments/assets/f6066806-a74d-4fcf-843a-e1356c100eef" />
 
 ---
 
