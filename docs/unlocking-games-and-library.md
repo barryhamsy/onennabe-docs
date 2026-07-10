@@ -43,14 +43,16 @@ SUO > Tools > Game Auto Update > click Open > Smart Apply
 <img width="459" height="298" alt="Steam_Unlock_ONENNABE_6CfTkpFHTs" src="https://github.com/user-attachments/assets/27b6f039-cb49-48f8-bdfd-f724daf45470" />
 
 ## ⚠ 32-Hour Cooldown
-
-!!! warning "Important — Read Before Unlocking"
-    Each game unlock has a **32-hour cooldown** before you can unlock another game.
-
-    - You can only unlock **one game at a time**
-    - After unlocking a game, you must wait **32 hours** before unlocking the next one
-    - Plan ahead — unlock your next game before you finish the current one
-    - The cooldown timer starts immediately after you click **Unlock Game**
+ 
+!!! warning "Applies to Denuvo, Hypervisor, Online Patch & Bypass Games Only"
+    Games that fall under **Denuvo**, **Hypervisor**, **Online Patch**, or **Bypass** categories are locked behind a **32-hour waiting period** after purchase before you can access and play them.
+ 
+    - The 32-hour lock starts from the moment your purchase is confirmed
+    - You will not be able to play these games until the 32 hours have passed
+    - This is by design and cannot be bypassed or shortened
+ 
+!!! info "Regular games are not affected"
+    Games that do not require Denuvo, Hypervisor, Online Patch, or Bypass can be unlocked and played without any cooldown restriction.
 
 ---
 
