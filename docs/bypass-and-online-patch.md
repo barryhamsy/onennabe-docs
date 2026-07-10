@@ -36,6 +36,7 @@ After Smart Apply finishes:
 3. Wait for the download to **fully complete** in Steam before continuing
 
 ### Step 3 — Apply Patch from the Library Tab
+<img width="1383" height="1052" alt="Steam_Unlock_ONENNABE_upZGy9r1YC" src="https://github.com/user-attachments/assets/091462e5-9ee2-4594-95c8-17ceea72946c" />
 
 Once the game is fully downloaded:
 
