@@ -14,6 +14,7 @@ Read this guide carefully before contacting support. Most issues are covered her
 | Activate my CD Key | [CD Key Activation](cd-key-activation.md) |
 | Apply bypass or online patch to a game | [Bypass & Online Patch](bypass-and-online-patch.md) |
 | Play a Denuvo game | [Denuvo Games](denuvo-games.md) |
+| Play Hypervisor game | [Troubleshooting](troubleshooting.md) |
 | Fix something that's not working | [Troubleshooting](troubleshooting.md) |
 
 ---
