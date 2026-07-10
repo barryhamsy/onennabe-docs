@@ -1,6 +1,6 @@
 # Unlocking Games & Library Tab
 
-This page covers how to unlock a game in ONENNABE and how to navigate the Library tab, including everything available in the right-click context menu.
+This page covers how to unlock a game in ONENNABE and how to navigate the Library tab, including the right-click context menu.
 
 ---
 
@@ -23,7 +23,7 @@ Inside the Game Detail modal:
 
 ### Step 3 — Lock the Game Version (Before Downloading)
 
-Before downloading in Steam, lock the game version to prevent Steam from updating it to an incompatible version:
+Before downloading in Steam, lock the game version to prevent Steam from auto-updating it to an incompatible version:
 
 ```
 SUO > Tools > Game Auto Update > click Open > Smart Apply
@@ -42,6 +42,18 @@ SUO > Tools > Game Auto Update > click Open > Smart Apply
 
 ---
 
+## ⚠ 32-Hour Cooldown
+
+!!! warning "Important — Read Before Unlocking"
+    Each game unlock has a **32-hour cooldown** before you can unlock another game.
+
+    - You can only unlock **one game at a time**
+    - After unlocking a game, you must wait **32 hours** before unlocking the next one
+    - Plan ahead — unlock your next game before you finish the current one
+    - The cooldown timer starts immediately after you click **Unlock Game**
+
+---
+
 ## Navigating the Library Tab
 
 The Library tab shows all games that have been unlocked and downloaded on your PC.
@@ -53,82 +65,53 @@ The Library tab shows all games that have been unlocked and downloaded on your P
 
 ### Finding a Game
 
-Use the **search box** at the top of the left sidebar to filter games by name. Click any game to load its detail panel on the right.
+Use the **search box** at the top of the left sidebar to filter by name. Click any game to load its detail panel on the right.
 
 ---
 
 ## Right-Click Context Menu
 
-Right-clicking any game in the Library tab opens a context menu with the following options:
+Right-clicking a game in the **Steam Library** opens Steam's context menu with these options:
 
 ---
 
-### Play
+### ▶ Play
 
-Launches the game. If multiple executables are available, you will be prompted to choose:
-
-- The game's main `.exe`
-- `HV-PlugNPlay.bat` / `HV-Launcher.bat` (for Hypervisor games — Windows 11 only)
+Launches the game directly. This is the standard way to start a game from Steam.
 
 ---
 
-### Bypass Game
+### Add to Favorites
 
-Applies the bypass patch to the game. Use this for games tagged `Bypass Available`.
-
-!!! warning
-    Turn off antivirus before using this option. Bypass files will be removed by antivirus if real-time protection is on.
+Marks the game as a favourite in your Steam library for quick access.
 
 ---
 
-### Online Patch
-
-Applies the online patch to the game. Use this for games tagged `Online Supported`.
-
-!!! warning
-    Turn off antivirus before using this option.
-
----
-
-### Smart Apply
-
-Runs Smart Apply on the game. This prepares the game files before downloading in Steam. Always run this before downloading a Bypass or Online Supported game.
-
----
-
-### Inject HV Launch Option
-
-Injects the Hypervisor launch option into Steam so the game can be launched directly from Steam with HV support. Use this if you prefer launching from Steam instead of from ONENNABE.
-
-See [Hypervisor Guide](hypervisor.md) for full details.
-
----
-
-### Lock / Unlock Version
-
-Toggles the game's auto-update setting in Steam:
-
-- **Lock (Disable)** — prevents Steam from auto-updating the game. Use this to keep the game on a working version.
-- **Unlock (Enable)** — allows Steam to update the game normally.
-
-!!! tip
-    Always keep games on **Lock** after downloading to prevent Steam updates from breaking the unlock.
-
----
-
-### Open Game Folder
+### Browse Local Files
 
 Opens the game's installation folder in Windows Explorer. Useful for:
 
-- Manually running `.bat` or `.exe` files
-- Checking if bypass/patch files are present
+- Manually running `.bat` or `.exe` files (e.g. `HV-PlugNPlay.bat`, `HV-Launcher.bat`)
+- Checking if bypass or patch files are present
 - Troubleshooting missing files
 
 ---
 
-### Remove from Library
+### Verify Integrity of Game Files
 
-Removes the game from the ONENNABE Library tab. This does **not** uninstall the game from Steam — it only removes it from the ONENNABE list.
+Steam checks all game files and re-downloads any that are missing or corrupted.
+
+!!! warning
+    Do **not** use Verify Integrity after applying a bypass or online patch. Steam will detect the patched files as modified and replace them with the original versions, removing your patch. You will need to re-apply the patch afterwards.
+
+---
+
+### Uninstall
+
+Uninstalls the game from your PC. The game will remain in your Steam library and can be re-downloaded at any time.
+
+!!! note
+    Uninstalling does not remove the game from ONENNABE. Your unlock is still active — just re-download and re-apply the patch if needed.
 
 ---
 
