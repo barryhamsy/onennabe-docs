@@ -48,6 +48,9 @@ Once the game is fully downloaded:
 
 That's it — your game is now patched and ready to play.
 
+!!! warning "onlinefix.me pop-up"
+When launching a game that has Online Patch applied, a browser pop-up from onlinefix.me may appear. Close it immediately — you do not need to do anything on that site. The game will still work normally after closing the pop-up.
+
 ---
 
 ## Summary
@@ -62,11 +65,11 @@ That's it — your game is now patched and ready to play.
 
 ## Important Notes
 
-!!! warning "Turn Off Antivirus"
-    Antivirus must be **OFF** when applying the patch. Bypass and online patch files will be flagged as false positives and deleted if antivirus is active. Add your Steam and ONENNABE folders to exclusions — see [Installation](installation.md).
-
-- **Do not skip Smart Apply.** Run it before downloading in Steam.
-- **The game must be fully downloaded** in Steam before applying the patch from the Library tab.
+## Important Notes
+ 
+- **Do not skip Smart Apply.** You must run it before downloading the game in Steam.
+- **The game must be fully downloaded** in Steam before you can apply the patch from the Library tab.
+- **Antivirus must be OFF** when applying the patch — bypass and online patch files will be flagged as false positives and deleted if antivirus is active. Add your Steam and ONENNABE folders to exclusions (see [Installation](Installation)).
 
 ---
 

@@ -166,6 +166,42 @@ Reverts the Steamless operation by restoring the original `.BAK` backup files.
 
 ---
 
+## Enable Online Function Toggle
+
+When you select a game in the Library tab, some games will show an **Enable Online Function** toggle in the game detail panel.
+
+!!! info "Availability"
+    This toggle is only shown for games that do **not** use Denuvo, Bypass, or Hypervisor methods. Games using those methods have their own online handling and do not use this toggle.
+
+### What It Does
+
+Enabling this toggle adds `-onlinefix` to the game's **Steam launch options**. This enables online functionality for games that use:
+
+- **Steam P2P (peer-to-peer) servers**
+- **Epic Online Services (EOS) P2P servers**
+
+Steam will close and restart automatically when you toggle this on or off to apply the change.
+
+### How to Use
+
+1. Select a game in the Library tab
+2. Find the **Enable Online Function** toggle in the game detail panel
+3. Toggle it **ON**
+4. A confirmation dialog will appear — click **OK**
+5. Steam will close and restart to apply the launch option
+6. Launch the game and try playing online
+
+To disable it, toggle it **OFF** and confirm — Steam will restart again to remove the launch option.
+
+### Important Notes
+
+!!! warning "Experimental — does not work with all games"
+    Enable Online Function works with games that use Steam P2P or Epic Online Services P2P networking. It does **not** work with games that use dedicated servers, other DRM-protected online systems, or custom matchmaking solutions.
+
+- If online play still does not work after enabling this, the game likely uses a server type that is not supported — check Discord for game-specific instructions
+
+---
+
 ## Removing Games from the Library
 
 See [Removing Games from the Library](library-remove-games.md) for how to use the checkbox selector and 🗑️ trash button to remove one or more games from your library.
