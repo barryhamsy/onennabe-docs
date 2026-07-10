@@ -89,6 +89,7 @@ When you select a game in the Library tab, a secondary action bar appears below 
 ---
 
 ### 🗑️ Remove Hypervisor Patch
+<img width="612" height="114" alt="image" src="https://github.com/user-attachments/assets/77bc0012-3681-4b60-9c3e-ccb08422ca57" />
 
 Appears on games that have a **Hypervisor Bypass** or **Bypass** applied.
 
@@ -106,6 +107,7 @@ Appears on games that have a **Hypervisor Bypass** or **Bypass** applied.
 ---
 
 ### 🩹 Patch Standalone / 🗑️ Remove Patch Standalone
+<img width="494" height="110" alt="image" src="https://github.com/user-attachments/assets/d87c6676-ad96-4be6-93ad-5a400ede32bc" />
 
 This button toggles based on whether the standalone patch (`onennabe_launcher.exe`) is currently installed in the game folder.
 
@@ -128,6 +130,7 @@ This button toggles based on whether the standalone patch (`onennabe_launcher.ex
 ---
 
 ### 🛡 Steamless [Remove Steam DRM]
+<img width="731" height="123" alt="image" src="https://github.com/user-attachments/assets/3a2ef795-4cc3-41ed-a075-6e5dee8777ff" />
 
 Runs **Steamless** — a tool that strips Steam DRM from the game's executable files. This allows the game executable to run without Steam's DRM layer.
 
@@ -146,6 +149,7 @@ Runs **Steamless** — a tool that strips Steam DRM from the game's executable f
 ---
 
 ### ↩️ Restore Original [Undo Steamless]
+<img width="824" height="125" alt="image" src="https://github.com/user-attachments/assets/f153e25d-9c7d-4f8e-9553-92c87f6ba342" />
 
 Reverts the Steamless operation by restoring the original `.BAK` backup files.
 
