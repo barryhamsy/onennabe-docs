@@ -79,6 +79,89 @@ Uninstalls the game from your PC. The game will remain in your Steam library and
 
 ---
 
+## Secondary Action Buttons
+
+When you select a game in the Library tab, a secondary action bar appears below the main Play button. These buttons provide additional tools for managing the game's patches and DRM.
+
+!!! info "Visibility rules"
+    **Patch Standalone**, **Steamless**, and **Restore Original** are hidden for games that use Bypass, Online Patch, or Hypervisor methods — those games use their own patching system and do not need these tools.
+
+---
+
+### 🗑️ Remove Hypervisor Patch
+
+Appears on games that have a **Hypervisor Bypass** or **Bypass** applied.
+
+**What it does:**
+- Removes all Hypervisor bypass files from the game folder
+- Triggers Steam to validate and restore the original game files
+
+**When to use:**
+- You want to revert the game back to its original unpatched state
+- The Hypervisor patch is causing issues and you want a clean slate before re-applying
+
+!!! warning
+    After removing the Hypervisor patch, you will need to re-apply it from the Library tab before the game will work again. See [Hypervisor Games](hypervisor.md) for how to re-apply.
+
+---
+
+### 🩹 Patch Standalone / 🗑️ Remove Patch Standalone
+
+This button toggles based on whether the standalone patch (`onennabe_launcher.exe`) is currently installed in the game folder.
+
+| State | Button Shown | What It Does |
+|---|---|---|
+| Not installed | **🩹 Patch Standalone** | Installs the standalone launcher into the game folder |
+| Already installed | **🗑️ Remove Patch Standalone** | Removes the standalone launcher from the game folder |
+
+**When to use Patch Standalone:**
+- The game needs a standalone launcher to run outside of Steam, this allows game to run without steam at all, but this doesn't work with all games.
+- You are setting up a game that requires the cold client method
+
+**When to use Remove Patch Standalone:**
+- You want to revert the game to its original state
+- The standalone patch is causing launch issues
+
+!!! note
+    Patch Standalone and Remove Patch Standalone are hidden for games that use Bypass, Online Patch, or Hypervisor — those methods do not use the standalone launcher.
+
+---
+
+### 🛡 Steamless [Remove Steam DRM]
+
+Runs **Steamless** — a tool that strips Steam DRM from the game's executable files. This allows the game executable to run without Steam's DRM layer.
+
+**What it does:**
+- Scans the game folder for DRM-protected executables
+- Replaces them with unpacked, DRM-free versions
+- The original files are backed up with a `.BAK` extension
+
+**When to use:**
+- A game fails to launch and DRM is suspected as the cause, this usually solve error 54 and error 6005432. Unfortunately this doesn't work with all games, especially games with Enigma Protector.
+- You need to run the game executable directly without Steam
+
+!!! warning
+    Only use Steamless if you know the game needs it. Running it on games that don't need it may cause launch issues.
+
+---
+
+### ↩️ Restore Original [Undo Steamless]
+
+Reverts the Steamless operation by restoring the original `.BAK` backup files.
+
+**What it does:**
+- Deletes the Steamless-unpacked executable
+- Restores the original game executable from the `.BAK` backup
+
+**When to use:**
+- Steamless caused the game to break or not launch correctly
+- You want to go back to the original DRM-protected executable
+
+!!! note
+    This button only works if a `.BAK` backup file exists — meaning Steamless was previously run on the game. If no backup exists, this button will have no effect.
+
+---
+
 ## Removing Games from the Library
 
 See [Removing Games from the Library](library-remove-games.md) for how to use the checkbox selector and 🗑️ trash button to remove one or more games from your library.
