@@ -66,11 +66,6 @@ SUO > Tools > Game Auto Update > click Open > Smart Apply
 
 ---
 
-## Still Not Working?
-
-See the [Troubleshooting](troubleshooting.md) page for step-by-step fixes.
-
----
 
 ## Using the Search Bar & SteamDB Button
 
@@ -145,3 +140,11 @@ Click **Genre ▾** to filter games by genre (e.g. Action, RPG, Sports, Strategy
 Click the **✕ Clear** button in the filter bar to remove all active filters and return to the full catalogue view.
 
 A coloured dot appears on any filter button that has an active selection, so you can quickly see which filters are on.
+
+---
+
+## Still Not Working?
+
+See the [Troubleshooting](troubleshooting.md) page for step-by-step fixes.
+
+---
