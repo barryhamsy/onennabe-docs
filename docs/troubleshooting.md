@@ -16,6 +16,7 @@ The simplest fix and often the most effective.
 ---
 
 ## Fix 2 — Fix Unlock Game Issue
+<img width="461" height="173" alt="image" src="https://github.com/user-attachments/assets/1c6d3fe5-fab8-4326-be6c-5fa55d326dd8" />
 
 1. Open **Steam Unlock ONENNABE**
 2. Go to the **Tools** section
