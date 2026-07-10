@@ -5,6 +5,7 @@ Your CD Key is what activates ONENNABE and gives you access to the game catalogu
 ---
 
 ## How to Activate
+<img width="989" height="1040" alt="image" src="https://github.com/user-attachments/assets/00f73e14-a42e-4f3d-ae24-1e2d8097dd0d" />
 
 1. Make sure **Steam is running** and you are logged in
 2. Open **Steam Unlock ONENNABE**
