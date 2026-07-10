@@ -15,13 +15,14 @@ The simplest fix and often the most effective.
 
 ---
 
-## Fix 2 — Restart Steam
-<img width="134" height="63" alt="image" src="https://github.com/user-attachments/assets/599c5bdd-4d6b-46aa-b6b9-3469e3b01233" />
+## Fix 2 — Fix Unlock Game Issue
 
-1. Close Steam completely (right-click the Steam tray icon → **Exit**)
-2. Wait a few seconds
-3. Reopen Steam and log in
-4. Reopen ONENNABE and try again
+1. Open **Steam Unlock ONENNABE**
+2. Go to the **Tools** section
+3. Click **Fix Now**
+4. Wait for it to complete
+5. Steam will restart — log back in
+6. Try again
 
 ---
 
