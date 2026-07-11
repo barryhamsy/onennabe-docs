@@ -37,9 +37,11 @@ Watch the video below for a full walkthrough of the download process:
 2. Go to the ONENNABE download link provided by your seller
 3. Click the download button
 4. If Chrome shows a warning saying **"This file may be harmful"**:
+
 a. 1st Method
     - Click the **arrow (⌄)** next to the discard button
     - Click **Keep** or **Keep anyway**
+
 b. 2nd Method
     - On your Keyboard, press CTRL + J
     - It will open download page
