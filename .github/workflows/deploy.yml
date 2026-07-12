@@ -5,9 +5,8 @@ on:
     branches:
       - main
   schedule:
-    # Runs automatically every 6 hours (At minute 0 past every 6th hour)
     - cron: '0 */6 * * *'
-  workflow_dispatch: # Allows you to manually trigger the run via the GitHub UI
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -17,6 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          # Fetches the full history so we can push changes back safely
+          fetch-depth: 0 
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -34,18 +36,16 @@ jobs:
           import re
 
           url = "https://raw.githubusercontent.com/OpenSteam001/steam-monitor/main/README.md"
-          target_file = "docs/steam.md"  # <--- Change this to your exact markdown file path
+          target_file = "docs/steam.md"
 
           try:
               with urllib.request.urlopen(url) as response:
                   content = response.read().decode("utf-8")
               
-              # Find the table section
               match = re.search(r"(\| Channel \|.*?\n\n)", content, re.DOTALL)
               if match:
                   table_content = match.group(1).strip()
                   
-                  # Overwrite or append to your file
                   with open(target_file, "w") as f:
                       f.write("# Latest Steam Client Versions\n\n")
                       f.write("This table updates automatically every 6 hours.\n\n")
@@ -56,6 +56,21 @@ jobs:
           except Exception as e:
               print(f"Error updating table: {e}")
           '
+
+      # NEW STEP: Commit the changes back to your main branch
+      - name: Commit and Push updated steam.md
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Check if steam.md actually changed to avoid empty commit errors
+          if git diff --quiet docs/steam.md; then
+            echo "No changes detected in Steam versions table."
+          else
+            git add docs/steam.md
+            git commit -m "chore: auto-update steam client versions [skip ci]"
+            git push origin main
+          fi
 
       - name: Deploy to GitHub Pages
         run: mkdocs gh-deploy --force
