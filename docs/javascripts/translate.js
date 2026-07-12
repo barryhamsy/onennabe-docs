@@ -36,12 +36,17 @@
     }, 250);
   }
 
-  // ── 4. Build the button + dropdown and attach to header ─────────────────
+  // ── 4. Build button — works on ALL page types including standalone tabs ──
   function buildButton() {
-    if (document.getElementById("translate-btn")) return; // already built
+    if (document.getElementById("translate-btn")) return;
 
-    var header = document.querySelector(".md-header__inner");
-    if (!header) return;
+    // Try multiple possible header selectors
+    var anchor =
+      document.querySelector(".md-header__inner .md-header__title") ||
+      document.querySelector(".md-header__inner") ||
+      document.querySelector(".md-header");
+
+    if (!anchor) return;
 
     // Translate element container
     var elDiv = document.getElementById("google_translate_element");
@@ -51,18 +56,22 @@
       document.body.appendChild(elDiv);
     }
 
-    // Button
+    // Button — append to header using fixed positioning so it always shows
     var btn = document.createElement("button");
     btn.id = "translate-btn";
     btn.innerHTML = "🌐 Translate";
     btn.title = "Translate this page";
+
+    // Append to header element
+    var header = document.querySelector(".md-header");
+    header.style.position = "relative";
     header.appendChild(btn);
 
-    // Dropdown wrapper
+    // Dropdown
     var dropdown = document.createElement("div");
     dropdown.id = "translate-dropdown";
     dropdown.appendChild(elDiv);
-    document.querySelector(".md-header").appendChild(dropdown);
+    header.appendChild(dropdown);
 
     // Toggle
     btn.addEventListener("click", function (e) {
@@ -75,7 +84,7 @@
       dropdown.classList.remove("visible");
     });
 
-    // Save language whenever user picks one
+    // Save language when user picks one
     var observer = new MutationObserver(function () {
       var sel = document.querySelector(".goog-te-combo");
       if (sel && !sel._suoBound) {
@@ -88,18 +97,23 @@
     observer.observe(document.body, { childList: true, subtree: true });
   }
 
-  // ── 5. Re-apply translation on MkDocs instant navigation ────────────────
-  // MkDocs Material uses a custom navigation that doesn't do full page reloads.
-  // We hook into the document$ observable exposed by the theme.
+  // ── 5. Hook into MkDocs Material navigation + fallback ──────────────────
+  function init() {
+    buildButton();
+    applyLang(getSavedLang());
+  }
+
   function hookNavigation() {
     if (typeof document$ !== "undefined") {
-      // Material theme's RxJS observable — fires on every page load
       document$.subscribe(function () {
-        buildButton();
-        applyLang(getSavedLang());
+        // Remove old button on each navigation so it gets rebuilt fresh
+        var old = document.getElementById("translate-btn");
+        if (old) old.remove();
+        var oldD = document.getElementById("translate-dropdown");
+        if (oldD) oldD.remove();
+        init();
       });
     } else {
-      // Fallback: poll until document$ is available
       var tries = 0;
       var iv = setInterval(function () {
         if (typeof document$ !== "undefined") {
@@ -108,9 +122,7 @@
         }
         if (++tries > 20) {
           clearInterval(iv);
-          // Last resort: just build on DOMContentLoaded
-          buildButton();
-          applyLang(getSavedLang());
+          init();
         }
       }, 300);
     }

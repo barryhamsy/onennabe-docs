@@ -1,5 +1,9 @@
-/* Translate button */
+/* Translate button — fixed to top-right of header, always visible */
 #translate-btn {
+  position: absolute;
+  top: 50%;
+  right: 60px;
+  transform: translateY(-50%);
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.35);
   color: #fff;
@@ -7,8 +11,8 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 13px;
-  margin-left: 8px;
   white-space: nowrap;
+  z-index: 100;
 }
 
 #translate-btn:hover {
