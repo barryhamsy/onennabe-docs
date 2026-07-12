@@ -6,6 +6,7 @@ theme:
   favicon: steamunlock_wannabe.ico
   logo: steamunlock_wannabe.ico
   name: material
+  custom_dir: overrides
   palette:
     scheme: slate
     primary: custom
@@ -21,8 +22,12 @@ theme:
     - search.suggest
     - content.code.copy
 
+extra_javascript:
+  - javascripts/translate.js
+  
 extra_css:
   - stylesheets/steam-theme.css
+  - stylesheets/translate.css
 
 nav:
   - Home: index.md
