@@ -1,8 +1,7 @@
-{% extends "base/partials/header.html" %}
+{% extends "partials/header.html" %}
 
-{% block site_meta %}
-{{ super() }}
-<div id="google_translate_element" style="display:none"></div>
+{% block announce %}
+<div id="google_translate_element"></div>
 <script type="text/javascript">
   function googleTranslateElementInit() {
     new google.translate.TranslateElement({
