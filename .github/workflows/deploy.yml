@@ -34,7 +34,8 @@ jobs:
           import urllib.request
           import re
 
-          url = "https://raw.githubusercontent.com/OpenSteam001/steam-monitor/main/README.md"
+          # Fixed: Changed "main" to "master" in the URL
+          url = "https://raw.githubusercontent.com/OpenSteam001/steam-monitor/master/README.md"
           target_file = "docs/steam.md"
 
           try:
@@ -42,6 +43,82 @@ jobs:
               with urllib.request.urlopen(req) as response:
                   content = response.read().decode("utf-8")
               
+              # Extract everything from the table header down
+              match = re.search(r"(\| Channel \|.*)", content, re.DOTALL)
+              if match:
+                  table_content = match.group(1).strip()
+                  
+                  with open(target_file, "w") as f:
+                      f.write("# Latest Steam Client Versions\n\n")
+                      f.write("This table updates automatically every 6 hours.\n\n")
+                      f.write(table_content + "\n")
+                  print("Steam versions successfully fetched!")
+              else:
+                  print("Could not find the table pattern in the source markdown.")
+          except Exception as e:
+              print(f"Error updating table: {e}")
+          '
+
+      - name: Commit and Push updated steam.md
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          if git diff --quiet docs/steam.md; then
+            echo "No changes detected in Steam versions table."
+          else
+            git add docs/steam.md
+            git commit -m "chore: auto-update steam client versions [skip ci]"
+            git push origin main
+          fi
+
+      - name: Deploy to GitHub Pages
+        run: mkdocs gh-deploy --forcename: Deploy MkDocs to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install MkDocs and Material theme
+        run: |
+          pip install mkdocs-material
+
+      - name: Fetch Latest Steam Client Versions
+        run: |
+          python -c '
+          import urllib.request
+          import re
+
+          # Fixed: Changed "main" to "master" in the URL
+          url = "https://raw.githubusercontent.com/OpenSteam001/steam-monitor/master/README.md"
+          target_file = "docs/steam.md"
+
+          try:
+              req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+              with urllib.request.urlopen(req) as response:
+                  content = response.read().decode("utf-8")
+              
+              # Extract everything from the table header down
               match = re.search(r"(\| Channel \|.*)", content, re.DOTALL)
               if match:
                   table_content = match.group(1).strip()
