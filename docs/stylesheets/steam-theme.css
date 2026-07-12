@@ -91,3 +91,16 @@
 .steam-btn-green:hover {
   background-color: #69c652;
 }
+.steam-btn-blue {
+  background-color: #2ea8e6 !important;
+  color: #171a21 !important; /* Dark text for high contrast on the bright blue button */
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-decoration: none !important;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.steam-btn-blue:hover {
+  background-color: #46b7ed !important;
+}
