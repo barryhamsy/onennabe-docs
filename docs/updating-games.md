@@ -11,6 +11,7 @@ Steam automatically updates games by default. For most games this is fine, but f
 ---
 
 ## Method 1 — Game Auto Update (Tools)
+<img width="1028" height="658" alt="Steam_Unlock_ONENNABE_lYHafeSLPl" src="https://github.com/user-attachments/assets/b6b9ff39-7fdb-4fd2-989c-1e27507b3aae" />
 
 ### How to Open
 
@@ -76,6 +77,7 @@ ONENNABE uses this logic to determine the correct setting for each game:
 ---
 
 ## Method 2 — UPDATE GAME Button (Library Tab)
+<img width="1050" height="735" alt="Steam_Unlock_ONENNABE_0IHVnpxhth" src="https://github.com/user-attachments/assets/e642151c-1771-41cf-8f9a-eb90a01f8b49" />
 
 The **⬆ UPDATE GAME** button redownloads the game's manifest directly from the ONENNABE GitHub server. It does **not** update the game through Steam.
 
