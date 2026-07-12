@@ -10,6 +10,10 @@ ONENNABE modifies Steam configuration files to unlock games. Windows and antivir
 
 ### 1A — Turn Off Smart App Control (Windows 11 only)
 
+<a href="windowsdefender://SmartApp/" class="steam-btn-blue">⚙️ Open Smart App Control</a>
+
+_Note: Click "Allow" or "Open Settings" if your browser prompts you._
+
 1. Open **Settings** → **Privacy & Security** → **Windows Security**
 2. Click **App & Browser Control**
 3. Click **Smart App Control settings**
@@ -20,6 +24,9 @@ ONENNABE modifies Steam configuration files to unlock games. Windows and antivir
 
 ### 1B — Add Windows Defender Exclusions
 
+[🛡️ Open Exclusions Settings](windowsdefender://Exclusions/){.steam-btn-green}  
+_Note: Click "Allow" or "Open Windows Security" if your browser prompts you._
+
 1. Open **Settings** → **Privacy & Security** → **Windows Security**
 2. Click **Virus & threat protection**
 3. Click **Manage settings** (under Virus & threat protection settings)
@@ -28,7 +35,11 @@ ONENNABE modifies Steam configuration files to unlock games. Windows and antivir
 
 ```
 C:\Program Files\Steam
+```
+```
 C:\Program Files (x86)\Steam
+```
+```
 C:\Program Files\Steam Unlock ONENNABE
 ```
 
@@ -85,11 +96,13 @@ See [CD Key Activation](cd-key-activation.md) to complete setup.
 **Installer gets deleted after download**  
 Your antivirus removed it. Complete Step 1B first, then re-download.
 
-**"Windows protected your PC" blue popup**  
-Click "More info" → "Run anyway". This is a SmartScreen false positive.
+**"Windows protected your PC" blue popup** 
+<img width="3000" height="1384" alt="7a87c930-7cda-11f1-9f08-a51988add829-by-Lens" src="https://github.com/user-attachments/assets/4a68df6c-d5c2-4af2-9ac0-fa39c9061fc9" />
+<br>Click "More info" → "Run anyway". This is a SmartScreen false positive.
 
 **App won't open after install**  
-Right-click the shortcut → Run as Administrator. Also make sure Steam is running.
+<img width="261" height="153" alt="Screenshot 2026-07-11 121221" src="https://github.com/user-attachments/assets/2f07c0b6-11f5-4db0-af51-82fb16535a1f" />
+<br>Right-click the shortcut → Run as Administrator. Also make sure Steam is running.
 
 **Black screen / WebView2 error on launch**  
 Install [Microsoft Edge WebView2 Runtime](https://developer.microsoft.com/en-us/microsoft-edge/webview2/) — this powers the app interface.
