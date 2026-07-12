@@ -2,7 +2,8 @@
 
 If ONENNABE shows **"Could not connect to update server."** on the splash screen with an **OFF VPN/WARP AND RETRY** button, the app is unable to reach the update server during startup.
 
-<img alt="Could not connect to update server" src="https://github.com/user-attachments/assets/1783877374297_image.png" />
+<img width="648" height="713" alt="image" src="https://github.com/user-attachments/assets/80beaeb5-824b-4ffa-8fea-718e265f5f32" />
+
 
 Follow the fixes below in order until the issue is resolved.
 
