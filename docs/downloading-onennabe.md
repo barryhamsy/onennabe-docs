@@ -7,8 +7,12 @@ Before downloading, you must turn off **Real-Time Protection** in Windows Defend
 
 ## Step 1 — Turn Off Real-Time Protection
 
-[🛡️ Open Real-Time Protection Settings](windowssecurity://threatsettings/){.steam-btn-green}  
-_Note: Click "Allow" or "Open Windows Security" if your browser prompts you._
+<div style="margin-bottom: 8px;">
+  <a href="windowssecurity://threatsettings" class="steam-btn-green">🛡️ Open Real-Time Protection Settings</a>
+</div>
+<p style="margin: 0; font-size: 0.9em; opacity: 0.85; font-style: italic;">
+  Note: Click "Allow" or "Open Settings" if your browser prompts you.
+</p>
 
 1. Open **Windows Security** (search for it in the Start menu)
 2. Click **Virus & threat protection**
