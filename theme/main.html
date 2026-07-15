@@ -25,7 +25,7 @@
     }
     #master-fab.open {
         transform: rotate(135deg) scale(1.05);
-        background-color: #d32f2f;
+        background-color: #d32f2f; /* Turn red when open for close cue */
     }
 
     /* 2. Collapsible Menu Panel */
@@ -44,6 +44,7 @@
         gap: 12px;
         width: 240px;
         
+        /* Smooth scale/slide transition */
         opacity: 0;
         transform: translateY(20px) scale(0.9);
         pointer-events: none;
@@ -90,6 +91,7 @@
         display: flex;
     }
 
+    /* Reset button inside translation */
     #reset-translate-btn {
         background-color: #a11b1b;
         color: white;
@@ -107,8 +109,8 @@
         background-color: #801010;
     }
 
-    /* 3. Popups/Modals Overlays */
-    .modal-overlay {
+    /* 3. Steam Modal Overlay */
+    #steam-popup-overlay {
         position: fixed;
         top: 0;
         left: 0;
@@ -118,10 +120,11 @@
         display: none;
         justify-content: center;
         align-items: center;
-        z-index: 1100;
+        z-index: 1100; /* Must sit higher than the FAB panel */
     }
 
-    .modal-content {
+    /* Popup Box */
+    #steam-popup-content {
         background-color: var(--md-card-background, #2f363d);
         color: var(--md-typeset-color, #fff);
         padding: 24px;
@@ -164,71 +167,7 @@
         border-bottom: 1px solid #444d56;
     }
 
-    /* 4. Request Help Form Custom Styling */
-    .form-group {
-        margin-bottom: 15px;
-    }
-    .form-group label {
-        display: block;
-        font-size: 13px;
-        font-weight: bold;
-        margin-bottom: 6px;
-        color: #b1b1b1;
-    }
-    .form-control {
-        width: 100%;
-        padding: 10px;
-        background-color: #24292e;
-        border: 1px solid #444d56;
-        border-radius: 6px;
-        color: #fff;
-        font-family: inherit;
-        box-sizing: border-box;
-    }
-    .form-control:focus {
-        border-color: #0078d4;
-        outline: none;
-    }
-    .media-placeholder {
-        border: 2px dashed #444d56;
-        border-radius: 6px;
-        padding: 15px;
-        text-align: center;
-        background-color: #24292e;
-        color: #888;
-        font-size: 12px;
-        cursor: pointer;
-    }
-    .media-placeholder:hover {
-        border-color: #0078d4;
-        color: #fff;
-    }
-    
-    /* Interactive Discord Button */
-    .discord-submit-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        background-color: #5865F2; /* Discord Blurple */
-        color: white;
-        border: none;
-        border-radius: 6px;
-        padding: 12px;
-        font-size: 14px;
-        font-weight: bold;
-        width: 100%;
-        box-sizing: border-box;
-        cursor: pointer;
-        text-align: center;
-        transition: background-color 0.2s;
-        margin-top: 10px;
-    }
-    .discord-submit-btn:hover {
-        background-color: #4752C4;
-    }
-
-    /* Clean override for Google elements */
+    /* Custom styles inside Google Widget */
     .goog-te-gadget-simple {
         border: 1px solid #444d56 !important;
         border-radius: 4px !important;
@@ -264,17 +203,12 @@
 
   <!-- 2. The Pop-out Action Menu Panel -->
   <div id="fab-menu-panel" onclick="event.stopPropagation()">
-    <!-- Action A: Trigger Request Help Modal -->
-    <button class="menu-action-btn" onclick="openHelpModal()">
-      <span>🙋</span> Request Help
-    </button>
-
-    <!-- Action B: Trigger Steam Tracker Modal -->
+    <!-- Action A: Trigger Steam Tracker Modal -->
     <button class="menu-action-btn" onclick="openSteamModal()">
       <span>🎮</span> Steam Version Status
     </button>
     
-    <!-- Action C: Toggle Google Translate Panel inside Menu -->
+    <!-- Action B: Toggle Google Translate Panel inside Menu -->
     <button class="menu-action-btn" onclick="toggleTranslateSelector(event)">
       <span>🌐</span> Translate Settings
     </button>
@@ -287,52 +221,14 @@
   </div>
 
   <!-- 3. Steam Status Modal Window -->
-  <div id="steam-popup-overlay" class="modal-overlay" onclick="toggleSteamPopup(false)">
-    <div id="steam-popup-content" class="modal-content" onclick="event.stopPropagation()">
+  <div id="steam-popup-overlay" onclick="toggleSteamPopup(false)">
+    <div id="steam-popup-content" onclick="event.stopPropagation()">
       <div class="popup-header">
         <h3>Live Steam Client Versions</h3>
         <button class="close-btn" onclick="toggleSteamPopup(false)">&times;</button>
       </div>
       <hr style="margin: 10px 0; border: 0; border-top: 1px solid #444d56;">
       <div id="steam-table-container">Loading latest version status...</div>
-    </div>
-  </div>
-
-  <!-- 4. Request Help Modal Window -->
-  <div id="help-popup-overlay" class="modal-overlay" onclick="toggleHelpPopup(false)">
-    <div id="help-popup-content" class="modal-content" onclick="event.stopPropagation()">
-      <div class="popup-header">
-        <h3>Submit Help Request</h3>
-        <button class="close-btn" onclick="toggleHelpPopup(false)">&times;</button>
-      </div>
-      <hr style="margin: 10px 0; border: 0; border-top: 1px solid #444d56;">
-      
-      <!-- Support Request Form -->
-      <div class="form-group">
-        <label for="help-game-name">Game Name</label>
-        <input type="text" id="help-game-name" class="form-control" placeholder="e.g. Portal 2">
-      </div>
-      
-      <div class="form-group">
-        <label for="help-game-appid">Game AppID</label>
-        <input type="text" id="help-game-appid" class="form-control" placeholder="e.g. 620">
-      </div>
-
-      <div class="form-group">
-        <label>Screenshot / Video</label>
-        <div class="media-placeholder" onclick="document.getElementById('help-file-upload').click()">
-          <span id="upload-status">📸 Click to attach file or drag here</span>
-          <input type="file" id="help-file-upload" style="display:none;" accept="image/*,video/*">
-        </div>
-      </div>
-
-      <!-- Action Button: Copies fields & redirects -->
-      <button class="discord-submit-btn" onclick="submitHelpRequest()">
-        <svg width="20" height="20" viewBox="0 0 127.14 96.36" fill="currentColor">
-          <path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a77.7,77.7,0,0,0,6.63-10.85,68.43,68.43,0,0,1-10.5-5c.88-.65,1.72-1.34,2.51-2a75.58,75.58,0,0,0,73,0c.79.71,1.63,1.4,2.52,2a68.43,68.43,0,0,1-10.5,5,77.7,77.7,0,0,0,6.63,10.85,105.73,105.73,0,0,0,31-18.83C129.82,48.12,123.1,25.39,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.9,46,53.9,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.14,46,96.14,53,91,65.69,84.69,65.69Z"/>
-        </svg>
-        Copy Details & Open Discord
-      </button>
     </div>
   </div>
 
@@ -348,13 +244,9 @@
   }
 
   function openSteamModal() {
+      // Close the master action panel first, then open Steam tracking modal
       toggleMasterMenu();
       toggleSteamPopup(true);
-  }
-
-  function openHelpModal() {
-      toggleMasterMenu();
-      toggleHelpPopup(true);
   }
 
   function toggleTranslateSelector(e) {
@@ -363,56 +255,13 @@
       transSection.classList.toggle('active');
   }
 
+  // Close menus on any window-wide click outside of active elements
   document.addEventListener("click", function () {
       document.getElementById('master-fab').classList.remove('open');
       document.getElementById('fab-menu-panel').classList.remove('visible');
   });
 
-  // ── 2. Request Help Submission Logic (Clipboard + Go) ──────────────────
-  function submitHelpRequest() {
-      const gameName = document.getElementById('help-game-name').value.trim() || "N/A";
-      const appID = document.getElementById('help-game-appid').value.trim() || "N/A";
-      const fileInput = document.getElementById('help-file-upload');
-      const fileAttached = fileInput.files.length > 0 ? `Attached (${fileInput.files[0].name})` : "None";
-
-      // 1. Build a beautifully clean Discord Markdown template
-      const template = [
-          "**🚨 [HELP REQUESTED] 🚨**",
-          "------------------------------------------------",
-          `🎮 **Game Name:** ${gameName}`,
-          `🆔 **Steam AppID:** ${appID}`,
-          `📸 **Media Status:** ${fileAttached}`,
-          "------------------------------------------------",
-          "*Note: Drag & drop your screenshot/video into Discord directly when posting!*"
-      ].join("\n");
-
-      // 2. Use browser Clipboard API to write text natively
-      navigator.clipboard.writeText(template).then(() => {
-          // 3. User feedback
-          alert("✅ Info copied to Clipboard!\n\nOnce Discord opens, paste (Ctrl+V) and drag-and-drop your screenshot file inside the channel.");
-          
-          // 4. Close form modal
-          toggleHelpPopup(false);
-
-          // 5. Open the target Discord channel in a new tab
-          window.open("https://discordapp.com/channels/333191744873299978/1483775813328441444", "_blank");
-      }).catch(err => {
-          console.error("Could not copy details automatically: ", err);
-          alert("Failed to auto-copy to clipboard. Please copy your text manually.");
-      });
-  }
-
-  // File upload change listener
-  document.getElementById('help-file-upload').addEventListener('change', function(e) {
-      const uploadStatus = document.getElementById('upload-status');
-      if (e.target.files[0]) {
-          uploadStatus.innerText = "📎 Ready: " + e.target.files[0].name;
-      } else {
-          uploadStatus.innerText = "📸 Click to attach file or drag here";
-      }
-  });
-
-  // ── 3. Google Translate Core Logic ──────────────────────────────────────
+  // ── 2. Google Translate & Reset Core Logic ──────────────────────────────
   window.googleTranslateElementInit = function () {
     new google.translate.TranslateElement({
       pageLanguage: "en",
@@ -448,6 +297,8 @@
 
   function resetTranslation() {
     saveLang("");
+    
+    // Wipe localized Google cookies
     document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + location.host;
     document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=." + location.host.split('.').slice(-2).join('.');
@@ -464,6 +315,7 @@
     }, 150);
   }
 
+  // Keep observer watching selector setups
   var observer = new MutationObserver(function () {
     var sel = document.querySelector(".goog-te-combo");
     if (sel && !sel._suoBound) {
@@ -475,18 +327,13 @@
   });
   observer.observe(document.body, { childList: true, subtree: true });
 
-  // ── 4. Modals Action Controllers ────────────────────────────────────────
+  // ── 3. Steam Modal Action Logic ─────────────────────────────────────────
   function toggleSteamPopup(show) {
       const overlay = document.getElementById('steam-popup-overlay');
       overlay.style.display = show ? 'flex' : 'none';
       if (show) {
           fetchLiveSteamVersions();
       }
-  }
-
-  function toggleHelpPopup(show) {
-      const overlay = document.getElementById('help-popup-overlay');
-      overlay.style.display = show ? 'flex' : 'none';
   }
 
   async function fetchLiveSteamVersions() {
@@ -533,7 +380,7 @@
       }
   }
 
-  // ── 5. MkDocs Navigation Listeners ──────────────────────────────────────
+  // ── 4. MkDocs Navigation Listeners ──────────────────────────────────────
   function init() {
       applyLang(getSavedLang());
   }
