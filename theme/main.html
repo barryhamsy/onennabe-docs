@@ -3,29 +3,94 @@
 {% block extrahead %}
   {{ super() }}
   <style>
-    /* Floating Action Button Styling */
-    #steam-fab {
+    /* Shared FAB Base */
+    .fab-btn {
         position: fixed;
-        bottom: 30px;
         right: 30px;
-        background-color: #0078d4;
+        width: 56px;
+        height: 56px;
         color: white;
         border: none;
-        border-radius: 50px;
-        padding: 12px 20px;
-        font-size: 14px;
-        font-weight: bold;
+        border-radius: 50%;
         box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         cursor: pointer;
         z-index: 999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
         transition: transform 0.2s, background-color 0.2s;
+    }
+    .fab-btn:hover {
+        transform: scale(1.05);
+    }
+    .fab-btn:active {
+        transform: scale(0.95);
+    }
+
+    /* Stacked FAB Positions */
+    #steam-fab {
+        bottom: 30px;
+        background-color: #0078d4;
     }
     #steam-fab:hover {
         background-color: #005a9e;
-        transform: scale(1.05);
     }
 
-    /* Modal Popup Overlay background */
+    #translate-fab {
+        bottom: 96px; /* Positioned directly above Steam FAB */
+        background-color: #2196F3;
+    }
+    #translate-fab:hover {
+        background-color: #1E88E5;
+    }
+
+    /* Mini Collapsible Translate Menu Panel */
+    #translate-menu {
+        position: fixed;
+        bottom: 162px; /* Aligned over Translate FAB */
+        right: 30px;
+        background-color: var(--md-card-background, #2f363d);
+        padding: 16px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-width: 200px;
+        
+        /* Entrance animation states */
+        opacity: 0;
+        transform: translateY(10px) scale(0.95);
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    #translate-menu.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+    }
+
+    /* Show Original / Reset Button Styling */
+    #reset-translate-btn {
+        background-color: #d32f2f;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 12px;
+        font-size: 13px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        text-align: center;
+        width: 100%;
+    }
+    #reset-translate-btn:hover {
+        background-color: #b71c1c;
+    }
+
+    /* Modal Popup Overlay background for Steam */
     #steam-popup-overlay {
         position: fixed;
         top: 0;
@@ -39,7 +104,7 @@
         z-index: 1000;
     }
 
-    /* Popup Inner Window Box */
+    /* Popup Inner Window Box for Steam */
     #steam-popup-content {
         background-color: var(--md-card-background, #2f363d);
         color: var(--md-typeset-color, #fff);
@@ -83,12 +148,7 @@
         border-bottom: 1px solid #444d56;
     }
 
-    /* Google Translate Integration Styling inside the Modal */
-    #translate-section {
-        margin-bottom: 15px;
-        padding-bottom: 15px;
-        border-bottom: 1px dashed #444d56;
-    }
+    /* Clean override for Google elements */
     .goog-te-gadget-simple {
         border: 1px solid #444d56 !important;
         border-radius: 4px !important;
@@ -96,11 +156,14 @@
         background-color: #24292e !important;
         color: #fff !important;
         font-family: inherit !important;
+        width: 100%;
+        box-sizing: border-box;
+        display: flex !important;
+        justify-content: space-between;
     }
     .goog-te-gadget-simple span {
         color: #fff !important;
     }
-    /* Hide the default messy Google frame banner if it overrides */
     .skiptranslate iframe { visibility: hidden !important; display: none !important; }
     body { top: 0px !important; }
 
@@ -114,12 +177,23 @@
 {% block footer %}
   {{ super() }}
 
-  <!-- Floating Action Button -->
-  <button id="steam-fab" onclick="toggleSteamPopup(true)" title="View Steam Versions & Settings">
-    🎮 Steam Version & Options
+  <!-- 1. Translate Floating Action Button -->
+  <button id="translate-fab" onclick="toggleTranslateMenu(event)" title="Translate Page">
+    🌐
   </button>
 
-  <!-- Mini Popup Modal Overlay -->
+  <!-- Translate Collapsible Menu Panel -->
+  <div id="translate-menu" onclick="event.stopPropagation()">
+    <div id="google_translate_element"></div>
+    <button id="reset-translate-btn" onclick="resetTranslation()">Show Original Language</button>
+  </div>
+
+  <!-- 2. Steam Status Floating Action Button -->
+  <button id="steam-fab" onclick="toggleSteamPopup(true)" title="View Steam Versions">
+    🎮
+  </button>
+
+  <!-- Steam Mini Popup Modal Overlay -->
   <div id="steam-popup-overlay" onclick="toggleSteamPopup(false)">
     <div id="steam-popup-content" onclick="event.stopPropagation()">
       <div class="popup-header">
@@ -127,18 +201,12 @@
         <button class="close-btn" onclick="toggleSteamPopup(false)">&times;</button>
       </div>
       <hr style="margin: 10px 0; border: 0; border-top: 1px solid #444d56;">
-      
-      <!-- Google Translate integration point -->
-      <div id="translate-section">
-        <div id="google_translate_element"></div>
-      </div>
-
       <div id="steam-table-container">Loading latest version status...</div>
     </div>
   </div>
 
   <script>
-  // ── 1. Google Translate Setup & Persistence Logic ───────────────────────
+  // ── 1. Google Translate & Reset Core Logic ──────────────────────────────
   window.googleTranslateElementInit = function () {
     new google.translate.TranslateElement({
       pageLanguage: "en",
@@ -172,7 +240,37 @@
     }, 250);
   }
 
-  // Monitor document changes to catch dynamic Google components and bind save triggers
+  // Force resets page back to standard English/original layout
+  function resetTranslation() {
+    saveLang("");
+    
+    // Clear Google translate cookies
+    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + location.host;
+    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=." + location.host.split('.').slice(-2).join('.');
+    
+    // Select default empty item in the dropdown
+    var sel = document.querySelector(".goog-te-combo");
+    if (sel) {
+      sel.value = "";
+      sel.dispatchEvent(new Event("change"));
+    }
+    
+    // Fallback: reload the frame content if cache stays stubborn
+    toggleTranslateMenu();
+    setTimeout(function() {
+      location.reload();
+    }, 150);
+  }
+
+  // Toggle dropdown menu view
+  function toggleTranslateMenu(e) {
+    if (e) e.stopPropagation();
+    const menu = document.getElementById('translate-menu');
+    menu.classList.toggle('visible');
+  }
+
+  // Monitor DOM selection changes
   var observer = new MutationObserver(function () {
     var sel = document.querySelector(".goog-te-combo");
     if (sel && !sel._suoBound) {
@@ -184,7 +282,12 @@
   });
   observer.observe(document.body, { childList: true, subtree: true });
 
-  // ── 2. Modal Controls & Steam Version Fetching ──────────────────────────
+  // Close menus on outside click
+  document.addEventListener("click", function () {
+    document.getElementById('translate-menu').classList.remove('visible');
+  });
+
+  // ── 2. Steam Modal Action Logic ─────────────────────────────────────────
   function toggleSteamPopup(show) {
       const overlay = document.getElementById('steam-popup-overlay');
       overlay.style.display = show ? 'flex' : 'none';
@@ -237,7 +340,7 @@
       }
   }
 
-  // ── 3. MkDocs Material Architecture Safe Execution ──────────────────────
+  // ── 3. MkDocs Navigation Listeners ──────────────────────────────────────
   function init() {
       applyLang(getSavedLang());
   }
