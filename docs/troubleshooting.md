@@ -49,8 +49,8 @@ If all the above did not help, use the Reinstall Steam option built into ONENNAB
 3. Click **Reinstall Steam**
 4. Wait for the process to complete
 5. **Re-login to Steam** with your account credentials after it finishes
-6. Reopen ONENNABE — activate with your CD Key if prompted
-7. Try again
+6. Close and then re-open ONENNABE and make sure your Library in Steam Unlock is not empty.
+7. Check your Steam if the game is Purchase or Play.
 
 !!! warning "Have Your Login Ready"
     After reinstalling Steam, you **must log back in**. Have your Steam username and password ready before starting this step.
