@@ -1,0 +1,66 @@
+/* Translate button — fixed to top-right of header, always visible */
+#translate-btn {
+  position: absolute;
+  top: 50%;
+  right: 60px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  white-space: nowrap;
+  z-index: 100;
+}
+
+#translate-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Dropdown */
+#translate-dropdown {
+  display: none;
+  position: absolute;
+  top: 56px;
+  right: 16px;
+  background: #1b2433;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 8px 12px;
+  z-index: 9999;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+#translate-dropdown.visible {
+  display: block;
+}
+
+/* Hide Google's injected top banner */
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+#goog-gt-tt {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+/* Style the select dropdown */
+.goog-te-gadget {
+  color: #aaa !important;
+  font-size: 13px !important;
+}
+
+.goog-te-gadget select {
+  background: #1b2433;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 4px 6px;
+  cursor: pointer;
+}
