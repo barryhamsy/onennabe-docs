@@ -3,7 +3,106 @@
 {% block extrahead %}
   {{ super() }}
   <style>
-    /* 1. Master Floating Action Button */
+    /* ── 0. Steam Theme Language Selector (Header beside Search) ──────────── */
+    #header-lang-container {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        margin-left: 10px;
+        z-index: 100;
+    }
+
+    #steam-lang-btn {
+        background: linear-gradient(135deg, #171a21 0%, #1b2838 100%);
+        color: #c6d4df;
+        border: 1px solid #2a475e;
+        border-radius: 4px;
+        padding: 6px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s ease-in-out;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    #steam-lang-btn:hover {
+        color: #ffffff;
+        border-color: #66c0f4;
+        background: #2a475e;
+        box-shadow: 0 0 10px rgba(102, 192, 244, 0.35);
+    }
+
+    #steam-lang-dropdown {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        background-color: #171a21;
+        border: 1px solid #2a475e;
+        border-radius: 6px;
+        padding: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        min-width: 220px;
+        z-index: 1000;
+        animation: fadeIn 0.15s ease-out;
+    }
+
+    #steam-lang-dropdown.show {
+        display: flex;
+    }
+
+    #steam-reset-lang-btn {
+        background: linear-gradient(90deg, #801010 0%, #a11b1b 100%);
+        color: #ffffff;
+        border: 1px solid #d32f2f;
+        border-radius: 4px;
+        padding: 8px 10px;
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        box-sizing: border-box;
+        transition: background 0.2s;
+    }
+    #steam-reset-lang-btn:hover {
+        background: #d32f2f;
+    }
+
+    /* Steam Style Overrides for Google Translate Combo Widget */
+    .goog-te-gadget-simple {
+        border: 1px solid #2a475e !important;
+        border-radius: 4px !important;
+        padding: 6px 10px !important;
+        background-color: #1b2838 !important;
+        color: #c6d4df !important;
+        font-family: inherit !important;
+        width: 100%;
+        box-sizing: border-box;
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .goog-te-gadget-simple span {
+        color: #c6d4df !important;
+    }
+    .goog-te-combo {
+        background-color: #1b2838 !important;
+        color: #c6d4df !important;
+        border: 1px solid #2a475e !important;
+        border-radius: 4px !important;
+        padding: 4px !important;
+        width: 100%;
+    }
+    .skiptranslate iframe { visibility: hidden !important; display: none !important; }
+    body { top: 0px !important; }
+
+    /* ── 1. Master Floating Action Button ────────────────────────────────── */
     #master-fab {
         position: fixed;
         bottom: 30px;
@@ -25,10 +124,10 @@
     }
     #master-fab.open {
         transform: rotate(135deg) scale(1.05);
-        background-color: #d32f2f; /* Turn red when open for close cue */
+        background-color: #d32f2f;
     }
 
-    /* 2. Collapsible Menu Panel */
+    /* ── 2. Collapsible Menu Panel ───────────────────────────────────────── */
     #fab-menu-panel {
         position: fixed;
         bottom: 96px;
@@ -43,8 +142,6 @@
         flex-direction: column;
         gap: 12px;
         width: 240px;
-        
-        /* Smooth scale/slide transition */
         opacity: 0;
         transform: translateY(20px) scale(0.9);
         pointer-events: none;
@@ -56,7 +153,6 @@
         pointer-events: auto;
     }
 
-    /* Sub-menu buttons */
     .menu-action-btn {
         background-color: #24292e;
         color: #fff;
@@ -78,7 +174,6 @@
         border-color: #586069;
     }
 
-    /* Collapsible Translate Options inside Menu Panel */
     #menu-translate-section {
         display: none;
         flex-direction: column;
@@ -91,7 +186,6 @@
         display: flex;
     }
 
-    /* Reset button inside translation */
     #reset-translate-btn {
         background-color: #a11b1b;
         color: white;
@@ -109,7 +203,7 @@
         background-color: #801010;
     }
 
-    /* 3. Steam Modal Overlay */
+    /* ── 3. Steam Modal Overlay ─────────────────────────────────────────── */
     #steam-popup-overlay {
         position: fixed;
         top: 0;
@@ -120,10 +214,9 @@
         display: none;
         justify-content: center;
         align-items: center;
-        z-index: 1100; /* Must sit higher than the FAB panel */
+        z-index: 1100;
     }
 
-    /* Popup Box */
     #steam-popup-content {
         background-color: var(--md-card-background, #2f363d);
         color: var(--md-typeset-color, #fff);
@@ -167,25 +260,6 @@
         border-bottom: 1px solid #444d56;
     }
 
-    /* Custom styles inside Google Widget */
-    .goog-te-gadget-simple {
-        border: 1px solid #444d56 !important;
-        border-radius: 4px !important;
-        padding: 6px !important;
-        background-color: #24292e !important;
-        color: #fff !important;
-        font-family: inherit !important;
-        width: 100%;
-        box-sizing: border-box;
-        display: flex !important;
-        justify-content: space-between;
-    }
-    .goog-te-gadget-simple span {
-        color: #fff !important;
-    }
-    .skiptranslate iframe { visibility: hidden !important; display: none !important; }
-    body { top: 0px !important; }
-
     @keyframes fadeIn {
         from { opacity: 0; transform: scale(0.95); }
         to { opacity: 1; transform: scale(1); }
@@ -196,24 +270,21 @@
 {% block footer %}
   {{ super() }}
 
-  <!-- 1. The Single Master FAB -->
+  <!-- 1. Master FAB -->
   <button id="master-fab" onclick="toggleMasterMenu(event)" title="Options Menu">
     ⚙️
   </button>
 
-  <!-- 2. The Pop-out Action Menu Panel -->
+  <!-- 2. Pop-out Action Menu Panel -->
   <div id="fab-menu-panel" onclick="event.stopPropagation()">
-    <!-- Action A: Trigger Steam Tracker Modal -->
     <button class="menu-action-btn" onclick="openSteamModal()">
       <span>🎮</span> Steam Version Status
     </button>
     
-    <!-- Action B: Toggle Google Translate Panel inside Menu -->
     <button class="menu-action-btn" onclick="toggleTranslateSelector(event)">
       <span>🌐</span> Translate Settings
     </button>
 
-    <!-- Collapsible Translation Segment -->
     <div id="menu-translate-section">
       <div id="google_translate_element"></div>
       <button id="reset-translate-btn" onclick="resetTranslation()">Show Original Language</button>
@@ -233,6 +304,40 @@
   </div>
 
   <script>
+  // ── 0. Inject Steam Language Button Beside Search Box ───────────────────
+  function placeHeaderLanguageButton() {
+      var searchBox = document.querySelector('.md-search');
+      if (searchBox && !document.getElementById('header-lang-container')) {
+          var container = document.createElement('div');
+          container.id = 'header-lang-container';
+          container.setAttribute('onclick', 'event.stopPropagation()');
+          container.innerHTML = `
+            <button id="steam-lang-btn" onclick="toggleHeaderTranslate(event)">
+              <span>🌐</span> <span>Language</span> ▾
+            </button>
+            <div id="steam-lang-dropdown">
+              <div id="google_translate_header_slot"></div>
+              <button id="steam-reset-lang-btn" onclick="resetTranslation()">Show Original Language</button>
+            </div>
+          `;
+          searchBox.parentNode.insertBefore(container, searchBox.nextSibling);
+      }
+  }
+
+  function toggleHeaderTranslate(e) {
+      if (e) e.stopPropagation();
+      const dropdown = document.getElementById('steam-lang-dropdown');
+      if (dropdown) {
+          dropdown.classList.toggle('show');
+          // Mirror Google Translate element into header slot if opened
+          var targetSlot = document.getElementById('google_translate_header_slot');
+          var translateEl = document.getElementById('google_translate_element');
+          if (targetSlot && translateEl && targetSlot.children.length === 0) {
+              targetSlot.appendChild(translateEl);
+          }
+      }
+  }
+
   // ── 1. Master Menu Visual Handlers ─────────────────────────────────────
   function toggleMasterMenu(e) {
       if (e) e.stopPropagation();
@@ -244,7 +349,6 @@
   }
 
   function openSteamModal() {
-      // Close the master action panel first, then open Steam tracking modal
       toggleMasterMenu();
       toggleSteamPopup(true);
   }
@@ -255,10 +359,15 @@
       transSection.classList.toggle('active');
   }
 
-  // Close menus on any window-wide click outside of active elements
+  // Close menus when clicking anywhere outside
   document.addEventListener("click", function () {
-      document.getElementById('master-fab').classList.remove('open');
-      document.getElementById('fab-menu-panel').classList.remove('visible');
+      const masterBtn = document.getElementById('master-fab');
+      const panel = document.getElementById('fab-menu-panel');
+      const headerDropdown = document.getElementById('steam-lang-dropdown');
+      
+      if (masterBtn) masterBtn.classList.remove('open');
+      if (panel) panel.classList.remove('visible');
+      if (headerDropdown) headerDropdown.classList.remove('show');
   });
 
   // ── 2. Google Translate & Reset Core Logic ──────────────────────────────
@@ -309,7 +418,6 @@
       sel.dispatchEvent(new Event("change"));
     }
     
-    toggleMasterMenu();
     setTimeout(function() {
       location.reload();
     }, 150);
@@ -336,7 +444,7 @@
       }
   }
 
-  // Time conversion helper injection
+  // Force-convert timestamps to Malaysia Time (UTC+8)
   function formatToLocalTime(dateString) {
       const parsedDate = Date.parse(dateString);
       if (!isNaN(parsedDate)) {
@@ -405,6 +513,7 @@
 
   // ── 4. MkDocs Navigation Listeners ──────────────────────────────────────
   function init() {
+      placeHeaderLanguageButton();
       applyLang(getSavedLang());
   }
 
