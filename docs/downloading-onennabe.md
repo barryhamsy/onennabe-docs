@@ -16,7 +16,7 @@ Before downloading, you must turn off **Real-Time Protection** in Windows Defend
 </p>
 
 > **If the button above is blocked by your browser:**
-> Press **Win + R**, paste `ms-settings:windowsdefender`, and press **Enter**.
+> Press `Win + R`, paste `ms-settings:windowsdefender`, and press **Enter**.
 > 
 > ![Run Dialog](https://github.com/user-attachments/assets/7e3fa3ed-5e95-4d4e-a3f5-d4612c98d53a)
 
